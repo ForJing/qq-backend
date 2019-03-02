@@ -14,7 +14,8 @@ routeFiles.forEach(routeFile => {
 
 const PORT = 8888
 
-const mongo_url = process.env.mongodb_url
+// const mongo_url = process.env.mongodb_url
+const mongo_url = 'mongodb://localhost:27017/qq'
 
 mongoose.connect(mongo_url, { useNewUrlParser: true })
 
