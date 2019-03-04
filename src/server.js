@@ -1,15 +1,15 @@
 const mongoose = require('mongoose')
 const express = require('express')
-const app = express()
 const fs = require('fs')
 const path = require('path')
+const app = express()
 
 const routeFiles = fs.readdirSync(path.resolve(__dirname, './routes'))
 
 routeFiles.forEach(routeFile => {
   const absolutePath = path.resolve(__dirname, 'routes', routeFile)
-  const route = require(absolutePath)
-  app.use(route)
+  const [prefix, route] = require(absolutePath)
+  app.use(prefix, route)
 })
 
 const PORT = 8888
